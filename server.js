@@ -11,16 +11,18 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.get("/api/books", (req, res) => {
-    res.json(database_response)
-})
+// app.get("/api/books", (req, res) => {
+//     res.json(database_response)
+// })
 
-app.get ("/api/google", (req, res) => {
-    res.json(axios_call)
-})
+// app.get ("/api/google", (req, res) => {
+//     res.json(axios_call)
+// })
+
+app.use(routes) 
 
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://user1:password1@ds125871.mlab.com:25871/heroku_0xn0jnk7",
+  process.env.MONGODB_URI || "mongodb://localhost/googlebooks",
   {
     useCreateIndex: true,
     useNewUrlParser: true

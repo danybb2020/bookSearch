@@ -23,10 +23,11 @@ class Home extends Component {
   };
 
   getBooks = () => {
+    console.log('made it here');
     API.getBooks(this.state.q)
       .then(res =>
         this.setState({
-          books: res.data
+          books: res.data.items
         })
       )
       .catch(() =>
@@ -89,7 +90,7 @@ class Home extends Component {
                       title={book.volumeInfo.title}
                       subtitle={book.volumeInfo.subtitle}
                       link={book.volumeInfo.infoLink}
-                      authors={book.volumeInfo.authors.join(", ")}
+                      authors={ (book.volumeInfo.authors !== undefined)? book.volumeInfo.authors.join(", ") :'' }
                       description={book.volumeInfo.description}
                       image={book.volumeInfo.imageLinks.thumbnail}
                       Button={() => (

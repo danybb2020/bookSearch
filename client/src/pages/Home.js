@@ -17,13 +17,13 @@ class Home extends Component {
 
   handleInputChange = event => {
     const { name, value } = event.target;
+  
     this.setState({
       [name]: value
     });
   };
 
   getBooks = () => {
-    console.log('made it here');
     API.getBooks(this.state.q)
       .then(res =>
         this.setState({
